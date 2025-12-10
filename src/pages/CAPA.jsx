@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-import "./capa.css";
+import "./CAPA.css";
 
 export default function CAPA() {
   const navigate = useNavigate();

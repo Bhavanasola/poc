@@ -7,30 +7,21 @@ import DeviationInfo from "./pages/DeviationInfo.jsx";
 
 import EvaluationComments from "./pages/EvaluationComments.jsx";
 import Preliminary from "./pages/PreliminaryInvestigation.jsx";
-
-// IMPORTANT: Uppercase .JSX extension
 import Review from "./pages/RCA.jsx";
-import CAPA from "./pages/CAPA.JSX";
+import CAPA from "./pages/kapa.jsx";
+
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Dashboard */}
         <Route path="/" element={<IncidentDashboard />} />
-
-        {/* Department Page */}
         <Route path="/department" element={<DepartmentPage />} />
-
-        {/* Workflow Pages */}
         <Route path="/general-info" element={<GeneralInfo />} />
         <Route path="/deviation" element={<DeviationInfo />} />
         <Route path="/preliminary" element={<Preliminary />} />
         <Route path="/review" element={<Review />} />
-
-        {/* Closure → CAPA Page */}
         <Route path="/closure" element={<CAPA />} />
-       <Route path="/comments" element={<EvaluationComments />} />
-
+        <Route path="/comments" element={<EvaluationComments />} />
       </Routes>
     </Router>
   );
