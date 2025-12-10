@@ -1,0 +1,110 @@
+/* MAIN CONTAINER */
+.pi-container {
+  width: 88%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.pi-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.pi-section {
+  margin-bottom: 28px;
+}
+
+.pi-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a2a44;
+}
+
+.pi-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.pi-na {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/***********************
+ * RICH TEXT EDITOR 
+ ***********************/
+.pi-editor {
+  border: 1px solid #bcccff;
+  background: #f8faff;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.pi-editor.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Toolbar */
+.pi-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.pi-toolbar button {
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #1a2a44;
+  background: #ffffff;
+  border: 1px solid #9cb3f2;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Editable text area */
+.pi-editor-body {
+  min-height: 115px;
+  font-size: 14px;
+  color: #000;
+  outline: none;
+  padding: 8px;
+}
+
+.pi-editor-body:empty:before {
+  content: attr(placeholder);
+  color: #8e9bb8;
+}
+
+/***********************
+ * BUTTONS
+ ***********************/
+.pi-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.pi-btn {
+  padding: 9px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.back { background: #dcdde1; }
+.submit { background: #197aff; color: #fff; }
+.save { background: #ffca63; color: #5a3e00; }

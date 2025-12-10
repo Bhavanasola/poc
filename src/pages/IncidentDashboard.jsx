@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 const IncidentDashboard = () => {
   const navigate = useNavigate();
 
-  // When "Create New Incident" is clicked — go to Departments page
   const handleCreateNewIncident = () => {
     navigate("/department");
   };
@@ -19,43 +18,51 @@ const IncidentDashboard = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <Navbar disableTabs={true}/>
-      <h1 style={styles.title}>Incident Management Dashboard</h1>
+    <div style={styles.page}>
+      <Navbar disableTabs={true} />
 
-      {/* Main Action Buttons */}
-      <div style={styles.actionButtons}>
-        <button
-          style={{ ...styles.button, ...styles.createButton }}
-          onClick={handleCreateNewIncident}
-        >
-          Create New Incident
-        </button>
-        <button style={styles.button} onClick={handleViewPending}>
-          View Pending Incidents
-        </button>
-        <button style={styles.button} onClick={handleViewRejected}>
-          View Rejected Incidents
-        </button>
-      </div>
+      <div style={styles.container}>
+        {/* Header */}
+        <div style={styles.header}>
+          <h1 style={styles.title}>Incident Management Dashboard</h1>
+          <p style={styles.subtitle}>
+            </p>
+        </div>
 
-      {/* Dashboard Boxes */}
-      <div style={styles.overviewGrid}>
-        <DashboardBox
-          title="Action Required"
-          content="You have 5 incidents requiring your review."
-          color="#dc3545"
-        />
-        <DashboardBox
-          title="Tickets by User Dept"
-          content="Total: 125 | Open: 15"
-          color="#007bff"
-        />
-        <DashboardBox
-          title="Tickets by Other Depts"
-          content="Total: 88 | Open: 9"
-          color="#ffc107"
-        />
+        {/* Main Action Buttons */}
+        <div style={styles.actionSection}>
+          <button
+            style={{ ...styles.button, ...styles.primaryButton }}
+            onClick={handleCreateNewIncident}
+          >
+            + Create New Incident
+          </button>
+          <button style={styles.button} onClick={handleViewPending}>
+            View Pending Incidents
+          </button>
+          <button style={styles.button} onClick={handleViewRejected}>
+            View Rejected Incidents
+          </button>
+        </div>
+
+        {/* Dashboard Boxes */}
+        <div style={styles.overviewGrid}>
+          <DashboardBox
+            title="Action Required"
+            content="You have 5 incidents requiring your review."
+            color="#dc3545"
+          />
+          <DashboardBox
+            title="Tickets by User Dept"
+            content="Total: 125 | Open: 15"
+            color="#007bff"
+          />
+          <DashboardBox
+            title="Tickets by Other Depts"
+            content="Total: 88 | Open: 9"
+            color="#ffc107"
+          />
+        </div>
       </div>
     </div>
   );
@@ -63,69 +70,93 @@ const IncidentDashboard = () => {
 
 // Small Card Component
 const DashboardBox = ({ title, content, color }) => (
-  <div style={{ ...styles.box, borderLeft: `5px solid ${color}` }}>
+  <div style={{ ...styles.box, borderTop: `4px solid ${color}` }}>
     <h3 style={styles.boxTitle}>{title}</h3>
     <p style={styles.boxContent}>{content}</p>
   </div>
 );
 
 const styles = {
-  container: {
-    padding: "0px 0px",
-    maxWidth: "1400px",
-    margin: "0 auto",
-    backgroundColor: "#f4f4f4",
+  page: {
     minHeight: "100vh",
+    background: "linear-gradient(135deg, #f5f7fb 0%, #e4ecf7 100%)",
+  },
+  container: {
+    maxWidth: "1200px",        // narrower so content doesn't look tiny
+    margin: "0 auto",
+    padding: "30px 40px 60px",
+  },
+  header: {
+    textAlign: "center",
+    marginTop: "10px",
+    marginBottom: "30px",
   },
   title: {
-    textAlign: "center",
-    marginBottom: "50px",
-    color: "#333",
-    fontSize: "32px", // ⬆️ bigger title text
-    fontWeight: "700",
+    margin: 0,
+    color: "#1f2933",
+    fontSize: "32px",
+    fontWeight: 700,
+    letterSpacing: "0.03em",
   },
-  actionButtons: {
+  subtitle: {
+    marginTop: "10px",
+    fontSize: "15px",
+    color: "#6b7280",
+  },
+  actionSection: {
     display: "flex",
     justifyContent: "center",
-    gap: "30px",
-    marginBottom: "60px",
+    gap: "18px",
+    marginBottom: "40px",
+    flexWrap: "wrap",
   },
   button: {
-    padding: "16px 35px",
-    fontSize: "18px",
-    border: "none",
-    borderRadius: "10px",
+    padding: "12px 24px",
+    fontSize: "15px",
+    borderRadius: "999px",
+    border: "1px solid #d1d5db",
+    backgroundColor: "#ffffff",
+    color: "#374151",
+    fontWeight: 600,
     cursor: "pointer",
-    fontWeight: "bold",
-    backgroundColor: "#6c757d",
-    color: "#fff",
-    transition: "background-color 0.2s",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.04)",
+    transition: "transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease",
   },
-  createButton: {
-    backgroundColor: "#28a745",
+  primaryButton: {
+    backgroundColor: "#2563eb",
+    color: "#ffffff",
+    border: "none",
+    boxShadow: "0 8px 18px rgba(37, 99, 235, 0.35)",
   },
   overviewGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-    gap: "35px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "24px",
   },
   box: {
-    backgroundColor: "#fff",
-    padding: "30px",
-    borderRadius: "5px",
-    boxShadow: "0 6px 5px rgba(0,0,0,0.1)",
-    transition: "transform 0.2s",
+    backgroundColor: "#ffffff",
+    padding: "22px 24px",
+    borderRadius: "16px",
+    boxShadow: "0 10px 30px rgba(15, 23, 42, 0.08)",
+    transition: "transform 0.15s ease, box-shadow 0.15s ease",
   },
   boxTitle: {
-    fontSize: "25px",
-    marginBottom: "12px",
-    color: "#555",
+    fontSize: "18px",
+    marginBottom: "10px",
+    color: "#111827",
+    fontWeight: 600,
   },
   boxContent: {
-    fontSize: "22px",
-    fontWeight: "700",
-    color: "#333",
+    fontSize: "15px",
+    fontWeight: 500,
+    color: "#4b5563",
   },
 };
+
+// Add simple hover effect using JS (optional – remove if not needed)
+Object.assign(styles.button, {
+  onMouseEnter: undefined,
+  onMouseLeave: undefined,
+});
 
 export default IncidentDashboard;

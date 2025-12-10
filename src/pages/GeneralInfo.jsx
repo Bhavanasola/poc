@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../components/Navbar"; 
 
 // Define the API endpoint for your Flask backend's submission route.
 const API_URL = 'http://127.0.0.1:5000/submit'; 
@@ -27,20 +28,21 @@ export default function GeneralInfo() {
   const formattedFuture = formatDate(futureDate);
   // --- End Date Formatting Logic ---
 
-  const [fields, setFields] = useState({
-    Originator: 'Sriram',
-    Supervisor: 'Sridhar',
-    'Quality Approver': 'Ramu',
-    'Quality Reviewer': 'Ratni',
-    'Date Opened': formattedToday, 
-    'Original Date Due': formattedFuture,
-    'Date Due': formattedFuture,
-    Title: 'Tablet hardness for ABC Tablets (Batch No: B1000) exceeded the limit'
-  });
+ const [fields, setFields] = useState({
+  Originator: '',                     // User will fill
+  Supervisor: '',                     // User will fill
+  'Quality Approver': '',              // User will fill
+  'Quality Reviewer': '',              // User will fill
+  'Date Opened': '',       // Automatically today's date
+  'Original Date Due': '', // 60 days later
+  'Date Due': '',         // Default due date same as original
+  Title: '' // Placeholder guidance
+});
 
-  const description = [
-    'Tablet hardness for ABC Tablets (Batch No: B1000) exceeded the limit'
-  ];
+const [description, setDescription] = useState(
+  fields.Title ? [fields.Title] : []
+);
+
 
   const handleChange = (key, value) => {
     setFields(prev => ({ ...prev, [key]: value }));
@@ -232,34 +234,10 @@ export default function GeneralInfo() {
           }
         `}
       </style>
-
+           
       <div>
         {/* Header */}
-        <header className="top-bar">
-          <div className="title-area">
-            <h1 className="record-title">
-              211 - {fields.Title}
-            </h1>
-            <div className="record-sub">Pending Data Review</div>
-            <div className="record-sub">Created: {fields['Date Opened']}</div>
-          </div>
-        </header>
-
-        {/* Tabs */}
-        <nav className="tabs" role="tablist">
-          {[
-            'General Information',
-            'Deviation Information',
-            'Preliminary Investigation',
-            'Review & Approve',
-            'Record Closure'
-          ].map((t, i) => (
-            <button key={t} className={i === 0 ? 'tab active' : 'tab'}>
-              {t}
-            </button>
-          ))}
-        </nav>
-
+       <Navbar />
         {/* Content */}
         <main className="content">
           <h2 className="section-title">General Information</h2>
@@ -351,7 +329,7 @@ export default function GeneralInfo() {
               style={{ backgroundColor: '#6c757d' }}
               onClick={() => navigate('/department')}
             >
-              Exit
+              Back
             </button>
           </div>
         </main>

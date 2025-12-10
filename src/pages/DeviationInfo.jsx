@@ -258,15 +258,34 @@ export default function DeviationInfo() {
 
         {/* Buttons */}
         <div className="btn-container">
-          <button className="btn btn-save" onClick={handleSave}>
-            💾 Save
-          </button>
-          <button className="btn btn-save-exit" onClick={handleSaveAndExit}>
-            💾 Save & Exit
-          </button>
-          <button className="btn btn-exit" onClick={handleExit}>
-            ❌ Exit
-          </button>
+            <button
+              className="btn"
+              style={{ backgroundColor: '#28a745' }}
+              onClick={async () => {
+                await handleSave();
+                 localStorage.setItem("canViewDeviation", "true"); // ✅ set flag
+                navigate('/preliminary'); // 👈 Goes to Deviation Info page
+              }}
+            >
+              Save
+            </button>
+            <button
+              className="btn"
+              style={{ backgroundColor: '#007bff' }}
+              onClick={async () => {
+                await handleSave();
+                navigate('/');
+              }}
+            >
+              Save & Exit
+            </button>
+           <button
+              className="btn"
+              style={{ backgroundColor: '#6c757d' }}
+              onClick={() => navigate('/general-info')}
+            >
+              Back
+            </button>
         </div>
       </main>
     </>

@@ -9,15 +9,14 @@ export default function Navbar({ activeTab, disableTabs = false }) {
     { name: "General Information", path: "/general-info" },
     { name: "Deviation Information", path: "/deviation" },
     { name: "Preliminary Investigation", path: "/preliminary" },
-    { name: "Review & Approve", path: "/review" },
-    { name: "Record Closure", path: "/closure" },
+    { name: "RCA", path: "/review" },
+    { name: "CAPA", path: "/closure" },
+    { name: "Evaluation Comments", path: "/comments" },
   ];
 
   return (
     <>
-      {/* ==========================
-          HEADER SECTION
-      =========================== */}
+      {/* HEADER */}
       <header className="top-bar">
         <div className="title-area">
           <h1 className="record-title">
@@ -28,22 +27,27 @@ export default function Navbar({ activeTab, disableTabs = false }) {
         </div>
       </header>
 
-      {/* ==========================
-          TAB NAVIGATION
-      =========================== */}
-      <nav className="tabs" role="tablist">
-        {tabs.map((tab, index) => (
-          <button
-            key={tab.name}
-            onClick={() => !disableTabs && navigate(tab.path)}
-            className={`tab 
-              ${activeTab === index ? "active" : ""} 
-              ${disableTabs ? "disabled" : ""}`}
-            disabled={disableTabs}
-          >
-            {tab.name}
-          </button>
-        ))}
+      {/* TABS */}
+      <nav className="tabs" role="tablist" aria-label="Deviation workflow steps">
+        {tabs.map((tab, index) => {
+          const isActive = activeTab === index;
+
+          return (
+            <button
+              key={tab.name}
+              type="button"
+              onClick={() => !disableTabs && navigate(tab.path)}
+              className={`tab ${isActive ? "active" : ""} ${
+                disableTabs ? "disabled" : ""
+              }`}
+              disabled={disableTabs}
+              role="tab"
+              aria-selected={isActive}
+            >
+              {tab.name}
+            </button>
+          );
+        })}
       </nav>
     </>
   );
