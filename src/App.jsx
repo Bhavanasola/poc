@@ -8,7 +8,7 @@ import DeviationInfo from "./pages/DeviationInfo.jsx";
 import EvaluationComments from "./pages/EvaluationComments.jsx";
 import Preliminary from "./pages/PreliminaryInvestigation.jsx";
 import Review from "./pages/RCA.jsx";
-import CAPA from "./pages/kapa.jsx";
+import CAPA from "./pages/CAPA.jsx";
 
 function App() {
   return (
